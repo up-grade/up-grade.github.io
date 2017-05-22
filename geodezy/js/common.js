@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	// Custom JS
-console.log("Work))");
+
 
 $('selector').selectbox();
 
@@ -36,13 +36,11 @@ $("#navigation a").mouseenter(function () {
 
 
 $("#ToTop").click(function(){
-
 $("html,body").animate({scrollTop:0},1500)
-})
-
-$("#ToTop").click(function(){
 $('#home').addClass('active');
 })
+
+
 
 
 function mixItUp(){
@@ -64,12 +62,31 @@ $('.works__item_titel').each(function(){
      contHeight=$(this).height()
      }
 })
-console.log(maxHeight);
+
 $('.works__item').height(maxHeight+contHeight+180);
 }, 1000)
 
 };
 mixItUp();
+$(window).resize(function() {
+	var maxHeight = 0;
+var contHeight = 0;
+
+    $('.works__item_img').each(function(){
+  if(maxHeight<$(this).height()){
+     maxHeight=$(this).height()
+     }
+})
+
+$('.works__item_titel').each(function(){
+  if(contHeight<$(this).height()){
+     contHeight=$(this).height()
+     }
+})
+
+$('.works__item').height(maxHeight+contHeight+180);
+
+})
 
 
 //Плавний скрол
