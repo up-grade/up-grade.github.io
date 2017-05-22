@@ -2,8 +2,22 @@ $(document).ready(function() {
 	// Custom JS
 console.log("Work))");
 
- $('.popap_c').magnificPopup();
+$('selector').selectbox();
 
+
+
+$('.btn_yellow').magnificPopup();
+
+
+$('.popap_c').click(function(){
+$('.popap_c').magnificPopup();
+return false;
+})
+
+$('.popap_f').click(function(){
+$('.popap_f').magnificPopup();
+return false;
+})
 
 $('.slider-re').owlCarousel({
 		items: 1,
@@ -16,14 +30,15 @@ $('.slider-re').owlCarousel({
 		navText : ""
 });
 
-$(".menu a").mouseenter(function () {
+$("#navigation a").mouseenter(function () {
 	$("#home").removeClass('active')
 })
 
 
-// $("#ToTop").click(function(){
-// $("html,body").animate({scrollTop:0},1500)
-// })
+$("#ToTop").click(function(){
+
+$("html,body").animate({scrollTop:0},1500)
+})
 
 $("#ToTop").click(function(){
 $('#home').addClass('active');
@@ -59,7 +74,7 @@ mixItUp();
 
 //Плавний скрол
 
-$("#menu, #btn").on("click","a", function (event) {
+$("#navigation, #btn").on("click","a", function (event) {
 
 		event.preventDefault();
 
@@ -73,6 +88,38 @@ $("#menu, #btn").on("click","a", function (event) {
 });
 
 
+
+
+  // Definition of caller element
+  var getTriggerElement = function(el) {
+    var isCollapse = el.getAttribute('data-collapse');
+    if (isCollapse !== null) {
+      return el;
+    } else {
+      var isParentCollapse = el.parentNode.getAttribute('data-collapse');
+      return (isParentCollapse !== null) ? el.parentNode : undefined;
+    }
+  };
+
+  // A handler for click on toggle button
+  var collapseClickHandler = function(event) {
+    var triggerEl = getTriggerElement(event.target);
+    // If trigger element does not exist
+    if (triggerEl === undefined) {
+      event.preventDefault();
+      return false;
+    }
+
+    // If the target element exists
+    var targetEl = document.querySelector(triggerEl.getAttribute('data-target'));
+    if (targetEl) {
+      triggerEl.classList.toggle('-active');
+      targetEl.classList.toggle('-on');
+    }
+  };
+
+  // Delegated event
+  document.addEventListener('click', collapseClickHandler, false);
 
 
 
